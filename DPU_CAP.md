@@ -7,8 +7,8 @@ sequenceDiagram
     participant CONFIG_DB
     participant DPU_STATE_DB for DPU0
     participant DPU_STATE_DB for DPU1
-    client->>gnmi splitter: read DPU_PORT table
-    gnmi splitter->>CONFIG_DB: read DPU_PORT table
+    client->>gnmi splitter: read DPUS table
+    gnmi splitter->>CONFIG_DB: read DPUS table
     CONFIG_DB-->>gnmi splitter: result
     gnmi splitter-->>client: result
     client->>gnmi splitter: read DPU_CAP table for DPU0
