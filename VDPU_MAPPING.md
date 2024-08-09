@@ -1,11 +1,13 @@
 ```mermaid
 sequenceDiagram
     participant client
-    participant gnmi server
-    participant CONFIG_DB
+    box NPU SONiC
+        participant gnmi splitter
+        participant CONFIG_DB
+    end
     client->>client: Allocate GUID for VDPU,<br>select the profile based on the DPU's capacity
-    client->>gnmi server: Update VDPU_MAPPING table
-    gnmi server->>CONFIG_DB: Update VDPU_MAPPING table
-    CONFIG_DB-->>gnmi server: result
-    gnmi server-->>client: result
+    client->>gnmi splitter: Update VDPU_MAPPING table
+    gnmi splitter->>CONFIG_DB: Update VDPU_MAPPING table
+    CONFIG_DB-->>gnmi splitter: result
+    gnmi splitter-->>client: result
 ```
