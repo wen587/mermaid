@@ -1,16 +1,13 @@
 ```mermaid
 sequenceDiagram
     participant client
-    participant gnmi splitter
-    participant gnmi server for DPU0
-    participant gnmi server for DPU1
-    participant CONFIG_DB
-    participant DPU_STATE_DB for DPU0
-    participant DPU_STATE_DB for DPU1
-    client->>gnmi splitter: read DPUS table
-    gnmi splitter->>CONFIG_DB: read DPUS table
-    CONFIG_DB-->>gnmi splitter: result
-    gnmi splitter-->>client: result
+    box NPU SONiC
+        participant gnmi splitter
+        participant gnmi server for DPU0
+        participant gnmi server for DPU1
+        participant DPU_STATE_DB for DPU0
+        participant DPU_STATE_DB for DPU1
+    end
     client->>gnmi splitter: read DPU_CAP table for DPU0
     gnmi splitter->>gnmi server for DPU0: read DPU_CAP table
     gnmi server for DPU0->>DPU_STATE_DB for DPU0: read DPU_CAP table
