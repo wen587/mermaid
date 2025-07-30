@@ -1,8 +1,3 @@
----
-config:
-  theme: redux
-  layout: dagre
----
 ```mermaid
 flowchart TB
  subgraph s1["Operation on DPU"]
